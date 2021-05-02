@@ -1,0 +1,48 @@
+<% @list.movies.each do |movie| %>
+
+  <div class="card card-movie col-12 col-sm-8 col-md-6 col-lg-4" style="width: 18rem;">
+    <%= image_tag movie.poster_url, alt: "poster", class: 'card-img-top' %>
+
+    <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold" ><%= movie.title %></h5>
+
+      <p> <%= movie.rating %> <i class="fas fa-star"></i> </p>
+
+      <p class="card-text"><%= movie.overview %></p>
+
+      <% bookmark = Bookmark.where("list_id = #{@list.id} and movie_id = #{movie.id}") %>
+
+      <p class="card-text"> <i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i> </p>
+
+      <div class="d-flex justify-content-end my-2">
+        <%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+
+    </div>
+
+  </div>
+<% end %>
+
+
+
+
+<% Bookmark.where(list_id: @list.id).each do |bookmark| %>
+
+    <div class="card card-movie col-12 col-sm-8 col-md-6 col-lg-4" style="width: 18rem;">
+      <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "poster", class: 'card-img-top' %>
+
+    <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold" ><%= Movie.find(bookmark.movie_id).title %></h5>
+      <p> <%= Movie.find(bookmark.movie_id).rating %> <i class="fas fa-star"></i> </p>
+
+      <p class="card-text"><%= Movie.find(bookmark.movie_id).overview %></p>
+
+      <p class="card-text"> <i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i> </p>
+
+      <div class="d-flex justify-content-end my-2">
+        <%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+
+    </div>
+  </div>
+<% end %>
