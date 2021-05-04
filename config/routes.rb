@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # # user can see the details of a given list and its name
   # get 'lists/:id', to: 'lists#show'
 
+  root to: 'lists#index'
+
   resources :lists, except: [:edit, :update, :destroy] do
     resources :bookmarks, only: [:new, :create]
   end
