@@ -4,13 +4,12 @@
     <%= image_tag movie.poster_url, alt: "poster", class: 'card-img-top' %>
 
     <div class="card-body">
-      <h5 class="card-title" style="font-weight: bold" ><%= movie.title %></h5>
 
-      <p> <%= movie.rating %> <i class="fas fa-star"></i> </p>
+      <h5 class="card-title"><strong><%= movie.title %></strong> <span>&#9679 <%= movie.rating %></span> <i class="fas fa-star"></i></h5>
 
       <p class="card-text"><%= movie.overview %></p>
 
-      <% bookmark = Bookmark.where("list_id = #{@list.id} and movie_id = #{movie.id}") %>
+      <% bookmark = Bookmark.where("list_id = #{@list.id} and movie_id = #{movie.id}").first %>
 
       <p class="card-text"> <i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i> </p>
 
