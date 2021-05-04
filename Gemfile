@@ -10,6 +10,8 @@ gem 'simple_form'
 
 # env
 gem 'dotenv-rails', groups: [:development, :test]
+# cloudinary
+gem 'cloudinary', '~> 1.16.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.6'
