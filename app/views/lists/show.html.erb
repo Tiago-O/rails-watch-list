@@ -32,3 +32,24 @@
 
   </div>
 </div>
+
+<div class="container d-flex justify-content-around mt-4">
+  <div class="flex-fill reviews-box">
+    <h4>Reviews</h4>
+      <% @list.reviews.each do |review| %>
+        <p><%= '⭐️' * review.rating %> </p>
+        <p><%= review.comment %></p>
+      <% end %>
+  </div>
+
+  <div class="flex-fill comment-box">
+    <h4>Add your review of this list</h4>
+    <%= simple_form_for [@list, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <div class="d-flex justify-content-end">
+      <%= f.submit 'Create Review', class: 'btn btn-success' %>
+    </div>
+    <% end %>
+  </div>
+</div>

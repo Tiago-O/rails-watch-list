@@ -10,6 +10,7 @@ puts 'cleaning up databases'
 Movie.destroy_all
 List.destroy_all
 Bookmark.destroy_all
+Review.destroy_all
 puts 'databases are clean'
 
 puts 'creating movies'
