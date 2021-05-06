@@ -2,8 +2,8 @@
   <h1>Add a movie</h1>
 
   <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.input :comment %>
     <%= f.association :movie, collection: Movie.all, input_html: { class: 'select2' }  %>
+    <%= f.input :comment %>
     <%= f.submit 'Add a movie' %>
   <% end %>
 
